@@ -10,17 +10,5 @@
         "cordova-plugin-whitelist@1.2.2",
         "cordova-custom-config@2.0.3",
         "cordova-plugin-geolocation@2.2.0"
-    ],
-    "title-ja": "",
-    "title-en": "Timekeeping",
-    "description-ja": "",
-    "description-en": "simple timekeeping with geolocation authentication.",
-    "category": "User Template",
-    "platform": [
-        "android",
-        "ios",
-        "winrt",
-        "chrome"
-    ],
-    "name": "generated-1496048538-5927d235013eb0286a83fcc0"
+    ]
 }
