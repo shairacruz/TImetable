@@ -150,7 +150,7 @@ $(document).ready(function(){
             if($("#Log").val() === "Time In" ){
                 bootbox.confirm({ 
                     size: "small",
-                    message: "Are you sure?", 
+                    message: "Are you sure to record time in?", 
                     callback: function(result){ /* result is a boolean; true = OK, false = Cancel*/
                         if(result){
                             Result = "Processing Time In";
@@ -165,7 +165,7 @@ $(document).ready(function(){
             }else if($("#Log").val() === "Time Out" ){
                 bootbox.confirm({ 
                     size: "small",
-                    message: "Are you sure?", 
+                    message: "Are you sure to record time out?", 
                     callback: function(result){ /* result is a boolean; true = OK, false = Cancel*/
                         if(result){
                             Result = "Processing Time Out";
@@ -179,7 +179,7 @@ $(document).ready(function(){
             }else{
                 bootbox.confirm({ 
                     size: "small",
-                    message: "Are you sure?", 
+                    message: "Are you sure to log out?", 
                     callback: function(result){ /* result is a boolean; true = OK, false = Cancel*/
                         if(result){
                             Result = "Logging Out";
@@ -192,7 +192,23 @@ $(document).ready(function(){
                 });
             }
         }else {
-            bootbox.alert("Can't log. Invalid Location");
+            if($("#Log").val() === "Log Out"){
+                bootbox.confirm({ 
+                    size: "small",
+                    message: "Are you sure to log out?", 
+                    callback: function(result){ /* result is a boolean; true = OK, false = Cancel*/
+                        if(result){
+                            Result = "Logging Out";
+                            showLogResult(Result);
+                            window.location.assign("index.html");
+                        }else{
+                            
+                        }
+                    }
+                });
+            }else{
+                bootbox.alert("Can't log. Invalid Location");
+            }
         }
         
     });
