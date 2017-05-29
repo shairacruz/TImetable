@@ -1,0 +1,262 @@
+@font-face {
+    font-family:"Cookie";
+    src: url("../fonts/Cookie-Regular.ttf") /* TTF file for CSS3 browsers */
+}
+@font-face {
+    font-family:"Raleway";
+    src: url("../fonts/Raleway-Regular.ttf") /* TTF file for CSS3 browsers */
+}
+@font-face {
+    font-family:"Alegreya Sans SC";
+    src: url("../fonts/AlegreyaSansSC-Light.ttf") /* TTF file for CSS3 browsers */
+}
+
+@font-face {
+    font-family:"Quicksand";
+    src: url("../fonts/Quicksand-Regular.ttf") /* TTF file for CSS3 browsers */
+}
+
+@font-face {
+    font-family:"Quicksand Light";
+    src: url("../fonts/Quicksand-Light.ttf") /* TTF file for CSS3 browsers */
+}
+
+html,
+body, 
+.viewport
+{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.no-gutter{
+    padding: 0;
+    margin: 0;
+}
+
+h1{
+    text-align: center;
+    font: normal 50px 'Cookie', cursive;
+    margin: 20px auto;
+}
+
+#comment{
+    text-align: center;
+    font: normal 50px 'Cookie', cursive;
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+
+.bt{
+    font-family: 'Raleway', sans-serif;
+    margin: 10px auto;
+    padding: 0;
+    height: 40px;
+    width: 100px !important;
+    background-color: #73C2FB;
+    bottom: 50px;
+    color: white;
+}
+
+.panel-body{
+    padding: 0;
+}
+
+.cover{
+   height: 250px;
+   width: 100%;
+   background-color: #73C2FB;
+}
+
+.incover{
+   height: 100px;
+   width: 100%;
+   background-color: #73C2FB;
+}
+
+.big{
+    font: normal 50px 'Quicksand Light', sans-serif;
+    color: #FFF;
+    text-align: center;
+    padding-top: 60px;
+}
+
+.small{
+    font: normal 40px 'Quicksand', sans-serif;
+    color: #FFF;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.smaller{
+    font: normal 20px 'Quicksand', sans-serif;
+    color: #000;
+    padding-top: 20px;
+    text-align: center;
+    margin: 0;
+}
+
+#date{
+    font: normal 20px 'Quicksand', sans-serif;
+    color: #FFF;
+    text-align: center;
+    padding-top: 0;
+}
+
+#Time-In, #Time-Out{
+    display: inline;
+}
+
+.timeLogs{
+    padding: 20px;
+}
+
+.footer {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #F3F3F3;
+    text-align: center;
+    width:100%;
+}
+
+.label{
+    font: normal 12px 'Quicksand', sans-serif;
+    border-style: none;
+    display: block;
+    background-color: inherit;
+    color: #000;
+    margin: 5px;
+    text-decoration: none;
+}
+
+.active{
+    color: #73C2FB;
+    background-color: #FFF;
+    position: absolute;
+    display: inline-block;
+    bottom: 0;
+    padding: 1rem;
+}
+
+img{
+    height: 30%;
+    width: 30%;
+}
+
+.login{
+    bottom: 20px;
+}
+
+foot-btn{
+    background-color: #fff;
+    position: absolute;
+    /* display: inline; */
+    bottom: 0;
+    padding: 1rem;
+}
+
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #333; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+    visibility: visible; /* Show the snackbar */
+
+/* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+.logo{
+    width: 72px;
+    height: 72px;
+}
+
+.content{
+    display: none;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: .8;
+}
+
+.flex-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #73C2FB;
+}
+
+.flex-item {
+    text-align: center;
+    margin: auto;
+}
+
+.white{
+    color: white;
+}
+
+.splash{
+    width: 150px; 
+    height: 150px;
+}
