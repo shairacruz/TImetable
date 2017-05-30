@@ -44,39 +44,20 @@ $(document).ready(function(){
                 var s = sec * 1;
 
                 setInterval(function(){ 
-
                     if(s < 60){
                         s++;
                     }else if (s === 60){
                         m++;
                         s=0;
                     }
-
-                    if(m === 60){
-                        h++;
-                    }
                     
-                    if (hr < 10){
-                        hr = "0" + hr;
+                    if(m === 60 && s === 0){
+                        h++;
+                        m=0;
                     }
-                    if (min < 10){
-                        min = "0" + min;
-                    }
-                    if (sec < 10){
-                        sec = "0" + sec;
-                    }
-
-                    //m = checkTime(m);
-                    //s = checkTime(s);
-
                     document.getElementById('time').innerHTML = h + ":" + m + ":" + s + " " + ap;
                     $("#time").val(h + ":" + m + ":" + s + " " + ap);
                 }, 1000);
-
-                //var serverTime = data;
-                //var serverOffset = serverTime - getClientTime();
-
-                //displayTime(serverTime, serverOffset);
             },
             error: function () {
                 showDate();
@@ -108,6 +89,16 @@ $(document).ready(function(){
                 }, 1000);
             }
         });
+    }
+    
+    function showDate(){
+        var date = new Date();
+        var year = date.getYear();
+        if(year < 1000){
+            year += 1900;
+        }
+        var monthArray = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+         $("#date").html( monthArray[date.getMonth()] + " " + date.getDate() + ", " + year);
     }
     
     function checkTime(i) {
@@ -245,8 +236,6 @@ $(document).ready(function(){
                         }
                     }
                 });
-            }else{
-                bootbox.alert("Can't log. Invalid Location");
             }
         }
         
@@ -273,6 +262,11 @@ $(document).ready(function(){
                 else {
                     getTimeIn();
                 }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown)
+            {
+                Result = "No internet connection.";
+                showLogResult(Result);
             }
         });
     }
@@ -326,6 +320,11 @@ $(document).ready(function(){
                 else {
                     getTimeOut();
                 }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown)
+            {
+                Result = "No internet connection.";
+                showLogResult(Result);
             }
         });
     }
