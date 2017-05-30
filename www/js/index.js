@@ -11,14 +11,14 @@ $(document).ready(function(){
     var loc_long;
     
     var onSuccess = function(position) {
-        bootbox.alert('Latitude: '          + position.coords.latitude          + '\n' +
+        /*bootbox.alert('Latitude: '          + position.coords.latitude          + '\n' +
               'Longitude: '         + position.coords.longitude         + '\n' +
               'Altitude: '          + position.coords.altitude          + '\n' +
               'Accuracy: '          + position.coords.accuracy          + '\n' +
               'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
               'Heading: '           + position.coords.heading           + '\n' +
               'Speed: '             + position.coords.speed             + '\n' +
-              'Timestamp: '         + position.timestamp                + '\n');
+              'Timestamp: '         + position.timestamp                + '\n');*/
         //if(typeof geolocation.lat === "undefined" || typeof geolocation.long === "undefined"){
         //    bootbox.alert("GPS not activated!");
         //}
@@ -217,20 +217,13 @@ $(document).ready(function(){
                     }
                 },
                 error: function () {
-                    if ($("#Username").val() === 'shairacruz' && $("#Password").val() === '123456') 
-                    {
-                        Result = "Logging In";
-                        showLogResult(Result);
-                        // Save data to sessionStorage
-                        sessionStorage.setItem('username', 'shairacruz');
-                        window.location.assign("homepage.html");
-                    }
                     Result = "Can't connect to server."
                     showLogResult(Result);
                 }
             });
         }else{
-            alert("Username or Password cannot be blank");
+            Result ="Username or Password cannot be blank";
+            showLogResult(Result);
         }
     });
    
