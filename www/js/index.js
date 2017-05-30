@@ -186,7 +186,7 @@ $(document).ready(function(){
                     }
                 },
                 error: function () {
-                    Result = "Error Occured"
+                    Result = "Can't connect to server."
                     showLogResult(Result);
                 }
             });

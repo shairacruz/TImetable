@@ -12,9 +12,9 @@
         "cordova-plugin-geolocation@2.2.0"
     ],
     "title-ja": "",
-    "title-en": "Timetable app",
+    "title-en": "Timetables",
     "description-ja": "",
-    "description-en": "simple timekeeping with geolocation authentication.",
+    "description-en": "timekeeping with geolocation authentication.",
     "category": "User Template",
     "platform": [
         "android",
@@ -22,5 +22,5 @@
         "winrt",
         "chrome"
     ],
-    "name": "generated-1496100454-592bea0dff2af207179ec3ac"
+    "name": "generated-1496104793-592bea0dff2af207179ec3ac"
 }
