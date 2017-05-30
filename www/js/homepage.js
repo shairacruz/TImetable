@@ -172,73 +172,9 @@ $(document).ready(function(){
     
     $("#Log").click(function () 
     {                
-        var Username = $("#user").val();
-        var Datenow = $("#datetime").val();
-        
-       //bootbox.alert(location);
-        if(location === "true"){
-            if($("#Log").val() === "Time In" ){
-                bootbox.confirm({ 
-                    size: "small",
-                    message: "Are you sure to record time in?", 
-                    callback: function(result){ /* result is a boolean; true = OK, false = Cancel*/
-                        if(result){
-                            Result = "Processing Time In";
-                            showLogResult(Result);
-                            ifIn(Username, Datenow);
-                        }else{
-                            
-                        }
-                    }
-                });
-                
-            }else if($("#Log").val() === "Time Out" ){
-                bootbox.confirm({ 
-                    size: "small",
-                    message: "Are you sure to record time out?", 
-                    callback: function(result){ /* result is a boolean; true = OK, false = Cancel*/
-                        if(result){
-                            Result = "Processing Time Out";
-                            showLogResult(Result);
-                            ifOut(Username, Datenow);
-                        }else{
-                            
-                        }
-                    }
-                });
-            }else{
-                bootbox.confirm({ 
-                    size: "small",
-                    message: "Are you sure to log out?", 
-                    callback: function(result){ /* result is a boolean; true = OK, false = Cancel*/
-                        if(result){
-                            Result = "Logging Out";
-                            showLogResult(Result);
-                            window.location.assign("index.html");
-                        }else{
-                            
-                        }
-                    }
-                });
-            }
-        }else {
-            if($("#Log").val() === "Log Out"){
-                bootbox.confirm({ 
-                    size: "small",
-                    message: "Are you sure to log out?", 
-                    callback: function(result){ /* result is a boolean; true = OK, false = Cancel*/
-                        if(result){
-                            Result = "Logging Out";
-                            showLogResult(Result);
-                            window.location.assign("index.html");
-                        }else{
-                            
-                        }
-                    }
-                });
-            }
-        }
-        
+        Result = "Checking GPS";
+        showLogResult(Result);
+        getLocStatus();        
     });
     
     function ifIn(Username, TimeLog){
@@ -368,6 +304,107 @@ $(document).ready(function(){
         x.className = "show";
         // After 3 seconds, remove the show class from DIV
         setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    }
+    
+     function getLocStatus(){
+        var onSuccess = function(position) {    
+            var loc_lat = position.coords.latitude;
+            var loc_long = position.coords.longitude;
+            
+            var lat = 14.607546599999997;
+            var long = 121.1080133;
+            
+            function arePointsNear(checkPoint, centerPoint, km) {
+                var ky = 40000 / 360;
+                var kx = Math.cos(Math.PI * centerPoint.lat / 180.0) * ky;
+                var dx = Math.abs(centerPoint.lng - checkPoint.lng) * kx;
+                var dy = Math.abs(centerPoint.lat - checkPoint.lat) * ky;
+                return Math.sqrt(dx * dx + dy * dy) <= km;
+            }
+            
+            var server_location = { lat: 14.607546599999997, lng: 121.1080133 };
+            var client_location = { lat: loc_lat, lng: loc_long };
+            
+            //1km radius
+            var isNear = arePointsNear(server_location, client_location, 1);
+            
+            var Username = $("#user").val();
+            var Datenow = $("#datetime").val();
+            if(isNear)
+            {
+                Result = "Position Located";
+                showLogResult(Result);
+                
+                if($("#Log").val() === "Time In" ){
+                    bootbox.confirm({ 
+                        size: "small",
+                        message: "Are you sure to record time in?", 
+                        callback: function(result){ /* result is a boolean; true = OK, false = Cancel*/
+                            if(result){
+                                Result = "Processing Time In";
+                                showLogResult(Result);
+                                ifIn(Username, Datenow);
+                            }else{
+                                
+                            }
+                        }
+                    });
+                    
+                }else if($("#Log").val() === "Time Out" ){
+                    bootbox.confirm({ 
+                        size: "small",
+                        message: "Are you sure to record time out?", 
+                        callback: function(result){ /* result is a boolean; true = OK, false = Cancel*/
+                            if(result){
+                                Result = "Processing Time Out";
+                                showLogResult(Result);
+                                ifOut(Username, Datenow);
+                            }else{
+                                
+                            }
+                        }
+                    });
+                }else{
+                    bootbox.confirm({ 
+                        size: "small",
+                        message: "Are you sure to log out?", 
+                        callback: function(result){ /* result is a boolean; true = OK, false = Cancel*/
+                            if(result){
+                                Result = "Logging Out";
+                                showLogResult(Result);
+                                window.location.assign("index.html");
+                            }else{
+                                
+                            }
+                        }
+                    });
+                }
+            }
+            else
+            {
+                if($("#Log").val() === "Log Out"){
+                    bootbox.confirm({ 
+                        size: "small",
+                        message: "Are you sure to log out?", 
+                        callback: function(result){ /* result is a boolean; true = OK, false = Cancel*/
+                            if(result){
+                                Result = "Logging Out";
+                                showLogResult(Result);
+                                window.location.assign("index.html");
+                            }else{
+                                
+                            }
+                        }
+                    });
+                }
+            }
+        };
+        
+        function onError(error) {
+            bootbox.alert("Failed! Please activate GPS");
+        }
+        var options = {maximumAge: 0, timeout: 5000, enableHighAccuracy:true}; 
+        navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
     }
     
  });
