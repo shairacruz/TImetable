@@ -55,6 +55,16 @@ $(document).ready(function(){
                     if(m === 60){
                         h++;
                     }
+                    
+                    if (hr < 10){
+                        hr = "0" + hr;
+                    }
+                    if (min < 10){
+                        min = "0" + min;
+                    }
+                    if (sec < 10){
+                        sec = "0" + sec;
+                    }
 
                     //m = checkTime(m);
                     //s = checkTime(s);
@@ -68,6 +78,35 @@ $(document).ready(function(){
 
                 //displayTime(serverTime, serverOffset);
             },
+            error: function () {
+                showDate();
+                setInterval (function clock(){
+                    
+                    var time = new Date();
+                    var hr = time.getHours();
+                    var min = time.getMinutes();
+                    var sec = time.getSeconds();
+                    var ampm = " PM ";
+                    
+                    if (hr < 12){
+                        ampm = " AM ";
+                    }
+                    if (hr > 12){
+                        hr -= 12;
+                    }
+                    if (hr < 10){
+                        hr = "0" + hr;
+                    }
+                    if (min < 10){
+                        min = "0" + min;
+                    }
+                    if (sec < 10){
+                        sec = "0" + sec;
+                    }
+                    document.getElementById('time').innerHTML = hr + ":" + min + ":" + sec + ampm;
+                    
+                }, 1000);
+            }
         });
     }
     
